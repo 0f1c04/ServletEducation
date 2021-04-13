@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#myfrm").on("submit", function (event) {
+                alert("submit......");
+                //default event 취소
+                event.preventDefault();
+                $.ajax({
+                    url:"calculator",
+                    type:"get",
+                    data: $("#myfrm").serialize(), //?num1=111&num2=222&op=+
+                    success:function (responseData) {
+                        $("#here").html(responseData);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="myfrm" action="calculator">
+    숫자1:<input type="number" name="num1"><br>
+    op:<select name="op">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select><br>
+    숫자2:<input type="number" name="num2"><br>
+    <input type="submit" value="계산">
+<div id="here">
+
+</div>
+</form>
+</body>
+</html>
