@@ -46,6 +46,7 @@ public class EmpVO {
         this.job_id = job_id;
     }
 
+
     public int getEmployee_id() {
         return employee_id;
     }

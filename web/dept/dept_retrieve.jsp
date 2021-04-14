@@ -30,6 +30,8 @@
 </head>
 <body>
 <h1>부서목록</h1>
+<a href="deptInsert">신규등록</a>
+<hr>
 <table>
     <tr>
         <td>부서코드</td>
@@ -46,6 +48,9 @@
         <td><%=dept.getManager_id() %>
         </td>
         <td><%=dept.getLocation_id() %>
+        </td>
+        <td>
+            <button onclick="location.href='deptDelete?deptid=<%=dept.getDept_id()%>'">삭제</button>
         </td>
     </tr>
     <%} %>

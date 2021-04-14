@@ -1,5 +1,6 @@
 package com.kosta.model;
 
+import com.kosta.util.ConvertUtil;
 import com.kosta.util.DBUtil;
 
 import java.sql.*;
@@ -61,7 +62,8 @@ public class EmpDAO {
             st.setString(6, emp.getJob_id());
             st.setInt(7, emp.getSalary());
             st.setDouble(8, emp.getCommission_pct());
-            st.setInt(9, emp.getManager_id());
+            if(emp.getManager_id()==0) st.setNull(9, Types.INTEGER);
+            else st.setInt(9, emp.getManager_id());
             st.setInt(10, emp.getDepartment_id());
             result = st.executeUpdate();
         } catch (SQLException e) {
@@ -327,12 +329,59 @@ public class EmpDAO {
         emp.setEmail(rs.getString("email"));
         emp.setEmployee_id(rs.getInt("employee_id"));
         emp.setFirst_name(rs.getString("first_name"));
-        emp.setHire_date(rs.getDate("hire_date"));
+        emp.setHire_date(ConvertUtil.convertDate(rs.getString("hire_date")));
         emp.setJob_id(rs.getString("job_id"));
         emp.setLast_name(rs.getString("last_name"));
         emp.setManager_id(rs.getInt("manager_id"));
         emp.setPhone_number(rs.getString("phone_number"));
         emp.setSalary(rs.getInt("salary"));
         return emp;
+    }
+
+    public Object selectAllJobID() {
+        List<JobVO> joblist = new ArrayList<JobVO>();
+        Connection conn = DBUtil.getConnection();
+        Statement st = null;
+        ResultSet rs = null;
+        String sql = "select * from JOBS order by 1";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                JobVO vo = new JobVO();
+                vo.setJob_id(rs.getString(1));
+                vo.setJob_title(rs.getString("job_title"));
+                joblist.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+
+        return joblist;
+    }
+
+    public Object selectAllManagerID() {
+        List<ManagerVO> mlist = new ArrayList<ManagerVO>();
+        Connection conn = DBUtil.getConnection();
+        Statement st = null;
+        ResultSet rs = null;
+        String sql = "select employee_id, first_name||last_name fullname " +
+                "from EMPLOYEES where employee_id in (select distinct manager_id from employees )";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                ManagerVO vo = new ManagerVO(rs.getInt(1), rs.getString(2));
+                mlist.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+
+        return mlist;
     }
 }
