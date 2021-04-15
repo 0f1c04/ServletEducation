@@ -1,7 +1,7 @@
-<%@ page import="com.kosta.model.LocationVO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.kosta.model.ManagerVO" %>
 <%@ page import="com.kosta.model.JobVO" %>
+<%@ page import="com.kosta.model.DepartmentVO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,7 +23,7 @@
     입사일(YYYY-MM-DD):<input type="text" name="emp_hire_date"><br>
     직무:<select name="emp_job_id">
     <%
-        List<JobVO> joblist = (List<JobVO>)request.getAttribute("joblist");
+        List<JobVO> joblist = (List<JobVO>) request.getAttribute("joblist");
         for (JobVO job : joblist) {
     %>
     <option value="<%=job.getJob_id()%>"><%=job.getJob_title()%>
@@ -43,10 +43,19 @@
     <% }%>
 </select>
     <br>
-    부서ID:<input type="number" name="emp_depart_id"><br>
+    부서ID:
+    <select name="emp_manager_id">
+            <%
+        List<DepartmentVO> dlist = (List<DepartmentVO>) request.getAttribute("dlist");
+        for (DepartmentVO d : dlist) {
+    %>
+        <option value="<%=d.getDepartment_id()%>"><%=d.getDepartment_name()%>
+        </option>
+            <% }%>
+    </select>
 
 
-    <input type="submit" value="입력하기">
+        <input type="submit" value="입력하기">
 </form>
 </body>
 </html>

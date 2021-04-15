@@ -1,6 +1,5 @@
 package com.kosta.controller;
 
-import com.kosta.model.DeptDAO;
 import com.kosta.model.EmpDAO;
 
 import javax.servlet.RequestDispatcher;

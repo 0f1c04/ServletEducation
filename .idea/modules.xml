@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WebJSPEducation.iml" filepath="$PROJECT_DIR$/WebJSPEducation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServletEducation.iml" filepath="$PROJECT_DIR$/ServletEducation.iml" />
     </modules>
   </component>
 </project>

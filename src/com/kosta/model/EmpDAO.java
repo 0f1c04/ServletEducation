@@ -384,4 +384,28 @@ public class EmpDAO {
 
         return mlist;
     }
+
+    public Object selectAllDepartmentID() {
+        List<DepartmentVO> deptlist = new ArrayList<DepartmentVO>();
+        Connection conn = DBUtil.getConnection();
+        Statement st = null;
+        ResultSet rs = null;
+        String sql = "select * from DEPARTMENTS order by 1";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                DepartmentVO vo = new DepartmentVO();
+                vo.setDepartment_id(rs.getInt(1));
+                vo.setDepartment_name(rs.getString("department_name"));
+                deptlist.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+
+        return deptlist;
+    }
 }

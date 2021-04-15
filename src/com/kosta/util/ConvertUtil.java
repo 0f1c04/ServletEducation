@@ -4,8 +4,6 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.ServletException;
-
 public class ConvertUtil {
     public static int convertInt(String param){
         return Integer.parseInt(param);

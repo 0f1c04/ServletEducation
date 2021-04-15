@@ -4,14 +4,14 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="WebJSPEducation" />
+          <element id="module-output" name="ServletEducation" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="JAX-WS-Apache Axis" />
           <element id="library" level="project" name="ojdbc8" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="WebJSPEducation/web/Web" />
+      <element id="javaee-facet-resources" facet="ServletEducation/web/Web" />
     </root>
   </artifact>
 </component>

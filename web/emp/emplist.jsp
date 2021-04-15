@@ -26,6 +26,12 @@
 <h1>직원목록</h1>
 <a href="empInsert">신규등록</a>
 <hr>
+<ul>
+    <li>${myname}</li>
+    <li><%=request.getAttribute("myscore")%></li>
+    <li>${myemp}</li>
+    <li>${info}</li>
+</ul>
 <table>
     <tr>
         <td>직원번호</td>

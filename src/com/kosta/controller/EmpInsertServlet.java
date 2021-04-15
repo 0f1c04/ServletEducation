@@ -54,6 +54,7 @@ public class EmpInsertServlet extends HttpServlet {
         EmpDAO emp = new EmpDAO();
         request.setAttribute("joblist", emp.selectAllJobID());
         request.setAttribute("mlist", emp.selectAllManagerID());
+        request.setAttribute("dlist", emp.selectAllDepartmentID());
 
         RequestDispatcher rd = request.getRequestDispatcher("empInsert.jsp");
         rd.forward(request, response);
