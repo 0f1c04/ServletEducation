@@ -1,6 +1,8 @@
 <%@ page import="com.kosta.model.EmpVO" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="../common/error500.jsp" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -24,6 +26,7 @@
 </head>
 <body>
 <h1>직원목록</h1>
+<jsp:include page="../common/header.jsp"></jsp:include>
 <a href="empInsert">신규등록</a>
 <hr>
 <ul>
@@ -73,6 +76,6 @@
     </tr>
     <%} %>
 </table>
-
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

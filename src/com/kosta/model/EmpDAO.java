@@ -12,6 +12,29 @@ public class EmpDAO {
 
     //CRUD(Create:insert, Read:select, U:update, D:delete)
     //    ڰ
+    public EmpVO loginChk(int empid, String email) {
+        EmpVO emp = null;
+        Connection conn = DBUtil.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        String sql = "select * from employees where employee_id = ? and email=?";
+        try {
+            st = conn.prepareStatement(sql);
+            st.setInt(1, empid);
+            st.setString(2, email);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                emp = makeEmp(rs);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.dbClose(rs, st, conn);
+        }
+        return emp;
+    }
+
     public int deleteEmp(int empid) {
         int result = 0;
         String sql = "delete from employees"
