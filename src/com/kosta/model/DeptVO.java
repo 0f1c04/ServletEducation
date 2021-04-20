@@ -1,10 +1,10 @@
 package com.kosta.model;
 
 public class DeptVO {
-    int dept_id;
-    String dept_name;
-    int manager_id;
-    int location_id;
+    private int dept_id;
+    private String dept_name;
+    private int manager_id;
+    private int location_id;
 
     public DeptVO() {}
 

@@ -26,8 +26,10 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ServletContext app = getServletContext();
 		List<EmpVO> user_list = (List<EmpVO>)app.getAttribute("user_list");
-		EmpVO emp = (EmpVO)session.getAttribute("emp");
-		user_list.remove(emp);
+		if(user_list==null) {
+			EmpVO emp = (EmpVO) session.getAttribute("emp");
+			user_list.remove(emp);
+		}
 		app.setAttribute("user_list", user_list);
 		session.invalidate();
 

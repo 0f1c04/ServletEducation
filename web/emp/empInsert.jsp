@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>직원 신규 등록</h1>
-<form action="empInsert" method="post">
+<form action="empInsert" method="post" enctype="multipart/form-data">
     직원번호:<input type="number" name="emp_id"><br>
     성:<input type="text" name="emp_fname"><br>
     이름:<input type="text" name="emp_lname"><br>
@@ -53,9 +53,10 @@
         </option>
             <% }%>
     </select>
+<br><br>
+    사진: <input type="file" name="photos"><br>
+    <input type="submit" value="입력하기">
 
-
-        <input type="submit" value="입력하기">
 </form>
 </body>
 </html>

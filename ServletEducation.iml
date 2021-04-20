@@ -27,5 +27,8 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="ojdbc8" level="project" />
     <orderEntry type="library" name="commons-dbcp2-2.8.0" level="project" />
+    <orderEntry type="library" name="taglibs-standard-compat-1.2.5" level="project" />
+    <orderEntry type="library" name="cos" level="project" />
+    <orderEntry type="library" name="commons-fileupload-1.4" level="project" />
   </component>
 </module>
